@@ -1,9 +1,9 @@
 <template>
     <footer>
         <div class="container">
-            <div class="row">
-                <div class="col d-flex">
-                    <img src="" alt="">
+            <div class="row py-4">
+                <div class="col px-5 border-end border-2">
+                    <img src="../assets/logo-prefeitura.png" alt="">
                     <p>Biblioteca Pública da Prefeitura Municipal de Brás Cubas</p>
                 </div>
                 <div class="col"><p>Powered by LH Technology Company</p></div>
@@ -16,7 +16,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-    name: 'FooterPrincipal'
+    name: 'TheFooter'
 })
 </script>
 
@@ -24,10 +24,21 @@ export default defineComponent({
 footer {
     background: #7b0000;
     width: 100%;
-    height: 15vh;
+    font-size: 1.2rem;
+    color: #ffffff;
 }
 img {
     width: 20%;
     height: 100%;
+}
+p{
+    margin: 0;
+    vertical-align: middle;
+}
+
+div.col{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 </style>

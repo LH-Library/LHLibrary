@@ -1,21 +1,69 @@
 <template>
-  <main class="container-fluid p-0">
-    <HeaderPrincipal />
-    <FooterPrincipal />
-  </main>
+<TheHeader />
+<nav class="navbar navbar-dark navbar-expand-lg"> 
+  <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                <RouterLink class="nav-link" to="/livros">Livros</RouterLink>
+              </li>
+              <li class="nav-item">
+                <RouterLink class="nav-link"  to="/usuarios">Usuários</RouterLink>
+              </li>
+              <li class="nav-item">
+                <RouterLink class="nav-link"  to="/leitores">Leitores</RouterLink>
+              </li>
+              <li class="nav-item">
+                <RouterLink class="nav-link"  to="/locacao">Locação</RouterLink>
+              </li>
+              <li class="nav-item">
+                <RouterLink class="nav-link"  to="/devolucao">Devolução</RouterLink>
+              </li>
+              <li class="nav-item">
+                <RouterLink class="nav-link" to="/entregas-pendentes">Entregas Pendentes</RouterLink>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+<RouterView />
+<TheFooter />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HeaderPrincipal from './components/HeaderPrincipal.vue';
-import FooterPrincipal from './components/FooterPrincipal.vue';
+import TheHeader from '@/components/TheHeader.vue';
+import TheFooter from '@/components/TheFooter.vue';
 
 export default defineComponent({
-    name: 'App',
-    components: { HeaderPrincipal, FooterPrincipal }
+  name: 'App',
+  components: {
+    TheHeader,
+    TheFooter
+  },
 });
 </script>
 
-<style>
+<style lang="scss">
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
 
+nav {
+  padding: 30px;
+  background: #920000;
+
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+
+    &.RouterLink-exact-active {
+      color: #42b983;
+    }
+  }
+}
 </style>
