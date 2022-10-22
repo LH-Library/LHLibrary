@@ -21,6 +21,7 @@ public class Livro implements Serializable {
     private String editora;
     private String edicao;
     private int paginas;
+    private String local;
     private String idioma;
     private String genero;
     private String status;
