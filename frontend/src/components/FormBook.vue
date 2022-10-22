@@ -1,5 +1,5 @@
 <template>
-<form id="form-new-book">
+<form id="form-new-book" @submit="createBook">
     <div class="row">
         <div class="col">
             <div class="row g-3 align-items-center mt-3">
@@ -110,14 +110,14 @@
             </div>
             <div class="row g-3 align-items-center mt-3">
                 <div class="col-3">
-                    <label class="form-label" for="isbn">Local</label>
+                    <label class="form-label" for="local">Local</label>
                 </div>
                 <div class="col-auto">
                     <input
                     class="form-control"
-                    name="isbn"
-                    id="isbn"
-                    v-model="isbn"
+                    name="local"
+                    id="local"
+                    v-model="local"
                     type="text">
                 </div>
             </div>
@@ -131,23 +131,64 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name: 'FormNewBook',
+    name: 'FormBook',
     methods:{
-        async getBooks() {
-            const req = await fetch("http://")
+        async getBookInformation(id: number) {
+            const req = await fetch(`http://localhost:8081/api/v1/livros/${id}`)
+            const data = await req.json();
+            
+            console.log(data)
+        },
+        async createBook(e) {
+            e.preventDefault();
+
+            const data = {
+                titulo: this.titulo,
+                autor: this.autor,
+                editora: this.editora,
+                edicao: this.edicao,
+                idioma: this.idioma,
+                paginas: this.paginas,
+                generos: this.generos,
+                status: this.status,
+                isbn: this.isbn,
+                ativo: this.ativo,
+                local: this.local
+            }
+            
+            const dataJson = JSON.stringify(data);
+
+            const req = await fetch("http://localhost:8081/api/v1/livros", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: dataJson
+            });
+
+            const res = await req.json();
+
+            console.log(res);
+
+        }
+    },
+    mounted() {
+        if (this.id != null) {
+            this.getBookInformation(this.id);
         }
     },
     data() {
         return {
-            titulo: "Corações feridos",
-            autor: "John Snow",
-            editora: "Blabla",
-            edicao: "10S",
-            idioma: "Portugẽs",
-            paginas: 100,
-            generos: ["Terror", "Romance"],
-            isbn: "3512-B",
-            local: "B-12"
+            id: this.$route.params.id,
+            titulo: null,
+            autor: null,
+            editora: null,
+            edicao: null,
+            idioma: null,
+            paginas: null,
+            generos: null,
+            status: "Disponível",
+            isbn: null,
+            ativo: true,
+            local: null
         }
     }
 });
