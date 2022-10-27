@@ -2,10 +2,7 @@ package com.lhlibrary.backend.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -24,7 +21,8 @@ public class Livro implements Serializable {
     private String local;
     private String idioma;
     private String genero;
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
     private String isbn;
     private boolean ativo;
 }
