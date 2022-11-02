@@ -9,9 +9,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoSettings;
 
+import java.util.List;
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @MockitoSettings
 class LivroServiceTest {
@@ -21,31 +23,56 @@ class LivroServiceTest {
     @InjectMocks
     private LivroServiceImpl livroService;
 
+    Livro livro = new Livro(1L, "Teste", "Teste", "Teste", "Teste", 120, "Teste", "Teste", "Teste", Status.DISPONIVEL, "Teste",  true);
+
     @Test
     void save() {
-        //given
-        Livro livro = new Livro(1L, "Teste", "Teste", "Teste", "Teste", 120, "Teste", "Teste", "Teste", Status.DISPONIVEL, "Teste",  true);
         ArgumentCaptor<Livro> captor = ArgumentCaptor.forClass(Livro.class);
-        //when
+
         livroService.save(livro);
-        //then
+
         verify(livroRepository, times(1)).save(captor.capture());
         assertEquals(captor.getValue(), livro);
     }
 
     @Test
     void findById() {
+        when(livroRepository.findById(1L)).thenReturn(Optional.of(livro));
+
+        Livro livroEncontrado = livroService.findById(1L);
+
+        verify(livroRepository, times(1)).findById(1L);
+        assertEquals(livro, livroEncontrado);
     }
 
     @Test
     void findAll() {
+        when(livroRepository.findAll()).thenReturn(List.of(livro));
+
+        List<Livro> listLivroEncontrado = livroService.findAll();
+
+        verify(livroRepository, times(1)).findAll();
+        assertEquals(List.of(livro), listLivroEncontrado);
     }
 
     @Test
     void updateLivro() {
+        ArgumentCaptor<Livro> captor = ArgumentCaptor.forClass(Livro.class);
+        Livro livroAlterado = new Livro(1L, "Teste", "Teste", "Teste", "Teste", 120, "Teste", "Teste", "Teste", Status.DISPONIVEL, "Teste",  false);
+
+        livroService.updateLivro(livroAlterado);
+
+        verify(livroRepository, times(1)).save(captor.capture());
+        assertEquals(captor.getValue(), livroAlterado);
     }
 
     @Test
     void search() {
+        when(livroRepository.findByTituloOrAutorContainingIgnoreCase("teste")).thenReturn(List.of(livro));
+
+        List<Livro> listLivroEncontrado = livroService.search("teste");
+
+        verify(livroRepository, times(1)).findByTituloOrAutorContainingIgnoreCase("teste");
+        assertEquals(List.of(livro), listLivroEncontrado);
     }
 }
