@@ -3,6 +3,7 @@ package com.lhlibrary.backend.service;
 import com.lhlibrary.backend.entity.Livro;
 import com.lhlibrary.backend.entity.Status;
 import com.lhlibrary.backend.repository.LivroRepository;
+import com.lhlibrary.backend.service.exception.LivroNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
@@ -43,6 +44,12 @@ class LivroServiceTest {
 
         verify(livroRepository, times(1)).findById(1L);
         assertEquals(livro, livroEncontrado);
+    }
+
+    @Test
+    void findByIdLivroNaoEncontrado() {
+        assertThrowsExactly(LivroNotFoundException.class,
+                () -> livroService.findById(2L));
     }
 
     @Test
