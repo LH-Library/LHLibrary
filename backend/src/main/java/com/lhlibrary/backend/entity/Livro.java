@@ -1,15 +1,16 @@
 package com.lhlibrary.backend.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Livro implements Serializable {
     private static final long serialVersionUID = 2273622175668001182L;
 
@@ -24,7 +25,8 @@ public class Livro implements Serializable {
     private String local;
     private String idioma;
     private String genero;
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
     private String isbn;
     private boolean ativo;
 }
