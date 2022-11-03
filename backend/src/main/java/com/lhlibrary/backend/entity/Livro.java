@@ -1,12 +1,16 @@
 package com.lhlibrary.backend.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Livro implements Serializable {
     private static final long serialVersionUID = 2273622175668001182L;
 

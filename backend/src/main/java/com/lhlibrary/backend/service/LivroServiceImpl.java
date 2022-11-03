@@ -2,11 +2,12 @@ package com.lhlibrary.backend.service;
 
 import com.lhlibrary.backend.entity.Livro;
 import com.lhlibrary.backend.repository.LivroRepository;
+import com.lhlibrary.backend.service.exception.LivroNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class LivroServiceImpl implements LivroService {
@@ -14,13 +15,14 @@ public class LivroServiceImpl implements LivroService {
     LivroRepository livroRepository;
 
     @Override
-    public Livro save(Livro livro) {
+    public Livro save(@NonNull Livro livro) {
         return livroRepository.save(livro);
     }
 
     @Override
-    public Optional<Livro> findById(Long id) {
-        return livroRepository.findById(id);
+    public Livro findById(@NonNull Long id) {
+        return livroRepository.findById(id)
+                .orElseThrow(() -> new LivroNotFoundException(id));
     }
 
     @Override
@@ -29,12 +31,12 @@ public class LivroServiceImpl implements LivroService {
     }
 
     @Override
-    public Livro updateLivro(Livro livro) {
+    public Livro updateLivro(@NonNull Livro livro) {
         return livroRepository.save(livro);
     }
 
     @Override
-    public List<Livro> search(String filtro) {
+    public List<Livro> search(@NonNull String filtro) {
         return livroRepository.findByTituloOrAutorContainingIgnoreCase(filtro);
     }
 

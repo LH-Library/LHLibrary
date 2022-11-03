@@ -1,18 +1,19 @@
 package com.lhlibrary.backend.service;
 
 import com.lhlibrary.backend.entity.Livro;
+import org.springframework.lang.NonNull;
 
 import java.util.List;
-import java.util.Optional;
+
 
 public interface LivroService {
-    Livro save(Livro livro);
+    Livro save(@NonNull Livro livro);
 
-    Optional<Livro> findById(Long id);
+    Livro findById(@NonNull Long id);
 
     List<Livro> findAll();
 
-    Livro updateLivro(Livro livro);
+    Livro updateLivro(@NonNull Livro livro);
 
     List<Livro> search(String filtro);
 }
