@@ -9,7 +9,7 @@ import { defineComponent } from 'vue';
 import FormBook from '@/components/FormBook.vue';
 
 export default defineComponent({
-    name: "BookView",
+    name: "EditBookView",
     props: {
     },
     components: { FormBook }
