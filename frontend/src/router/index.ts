@@ -16,9 +16,24 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
   {
-    path: '/novo-livro',
-    name: 'new-book',
-    component: () => import('../views/BookView.vue')
+    path: '/livros',
+    name: 'livros',
+    component: () => import('../views/BooksView.vue')
+  },
+  {
+    path: '/livros/novo',
+    name: 'livros-novo',
+    component: () => import('../views/NewBookView.vue')
+  },
+  {
+    path: '/livros/editar/:id',
+    name: 'livros-editar',
+    component: () => import('../views/EditBookView.vue')
+  },
+  {
+    path: '/livros/detalhes/:id',
+    name: 'livros-detalhes',
+    component: () => import('../views/DetailsBookView.vue')
   }
 ]
 
