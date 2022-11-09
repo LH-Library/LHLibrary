@@ -5,7 +5,7 @@
       <button type="button" class="btn btn-danger" @click="goToAddBookPage">Adicionar</button>
     </div>
     <div class="mt-5">
-      <BooksTable />
+      <BooksTable :books="this.books" />
     </div>
   </main>
 </template>
@@ -22,7 +22,22 @@ export default defineComponent({
   components: { SearchBar, BooksTable },
   methods: {
     goToAddBookPage() {
-      this.$router.push({ name: 'livros-novo'})
+      this.$router.push({ name: 'livros-novo' })
+    },
+    async getBooks() {
+      const req = await fetch(`http://localhost:8081/api/v1/livros`)
+      const data = await req.json();
+
+      console.log(data);
+      this.books = data;
+    }
+  },
+  mounted() {
+      this.getBooks();
+  },
+  data() {
+    return {
+      books: []
     }
   }
 });

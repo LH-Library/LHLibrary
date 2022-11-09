@@ -96,16 +96,16 @@ export default defineComponent({
             console.log(data);
 
             this.form.titulo = data.titulo,
-                this.form.autor = data.autor,
-                this.form.editora = data.editora,
-                this.form.edicao = data.edicao,
-                this.form.idioma = data.idioma,
-                this.form.paginas = data.paginas,
-                this.form.genero = data.genero,
-                this.form.status = data.status,
-                this.form.isbn = data.isbn,
-                this.form.ativo = data.ativo,
-                this.form.local = data.local
+            this.form.autor = data.autor,
+            this.form.editora = data.editora,
+            this.form.edicao = data.edicao,
+            this.form.idioma = data.idioma,
+            this.form.paginas = data.paginas,
+            this.form.genero = data.genero,
+            this.form.status = data.status,
+            this.form.isbn = data.isbn,
+            this.form.ativo = data.ativo,
+            this.form.local = data.local
         },
         async createBook(e: Event) {
             e.preventDefault();
@@ -123,7 +123,6 @@ export default defineComponent({
                 ativo: this.form.ativo,
                 local: this.form.local
             }
-
 
             const dataJson = JSON.stringify(data);
 

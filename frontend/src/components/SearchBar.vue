@@ -1,16 +1,16 @@
 <template>
     <div>
         <div class="input-group has-validation">
-            <span class="input-group-text">Pesquisar</span>
+            <span class="input-group-text" >Pesquisar</span>
             <div class="form-floating is-invalid">
-                <input type="text" class="form-control is-invalid" id="floatingInputGroup2"
-                    placeholder="Título, autor ou gênero" required>
+                <input type="text" class="form-control is-invalid" id="floatingInputGroup2" placeholder="Título, autor ou gênero" v-model="search">
                 <label for="floatingInputGroup2">Pesquisa</label>
             </div>
             <div class="invalid-feedback">
                 Nenhum resultado encontrado
             </div>
         </div>
+        <div>{{searchBooks}}</div>
     </div>
 </template>
 
@@ -20,28 +20,20 @@ import { defineComponent } from "vue";
 export default defineComponent({
     name: 'SearchBar',
     methods: {
-        async searchBooks() {
-            const req = await fetch(`http://localhost:8081/api/v1/livros?=${this.search}`);
-            const data = await req.json();
+    
+    },
+    computed: {
+        searchBooks() {
+            const req = fetch(`http://localhost:8081/api/v1/livros?filtro=${this.search}`);
+            const data = req.json();
+
+            console.log(data);
 
             return data;
-        },
+        }
     },
     data() {
         return {
-            books: [{
-                titulo: "",
-                autor: "",
-                editora: "",
-                edicao: "",
-                idioma: "",
-                paginas: "",
-                generos: "",
-                status: "",
-                isbn: "",
-                ativo: "",
-                local: ""
-            }],
             search: ""
         }
     }
