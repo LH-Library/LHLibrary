@@ -11,11 +11,11 @@
         </thead>
         <tbody>
             <tr v-for="(book, i) in books" :key="i">
-                <th scope="row">{{book.id}}</th>
-                <td>{{book.titulo}}</td>
-                <td>{{book.autor}}</td>
-                <td>{{book.genero}}</td>
-                <td>{{book.local}}</td>
+                <th scope="row">{{ book.id }}</th>
+                <td><a class="title-link" @click="goToDetailsBookPage(book.id)">{{ book.titulo }}</a></td>
+                <td>{{ book.autor }}</td>
+                <td>{{ book.genero }}</td>
+                <td>{{ book.local }}</td>
             </tr>
         </tbody>
     </table>
@@ -25,7 +25,12 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
     name: 'BooksTable',
-    props: { books: {type: Array} },
+    props: { books: { type: Array } },
+    methods: {
+        goToDetailsBookPage(id) {
+            this.$router.push({ name: 'livros-detalhes', params: { id: id } })
+        }
+    },
     data() {
         return {
         }
@@ -33,6 +38,14 @@ export default defineComponent({
 })
 </script>
 
-<style>
-
+<style lang="scss">
+.title-link {
+    font-weight: 600;
+    color: #3f3f3f;
+    text-decoration: none;
+    &:hover {
+        color: #7b0000;
+        cursor: pointer;
+    }
+}
 </style>
