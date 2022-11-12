@@ -26,14 +26,6 @@ import { defineComponent } from "vue";
 export default defineComponent({
     name: 'BooksTable',
     props: { books: {type: Array} },
-    methods: {
-        async searchBooks() {
-            const req = await fetch(`http://localhost:8081/api/v1/livros?=${this.search}`);
-            const data = await req.json();
-
-            return data;
-        }
-    },
     data() {
         return {
         }

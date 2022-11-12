@@ -43,7 +43,7 @@ describe('FormBook.vue', () => {
 
   it('verify type of', () => {
 
-    // expect(wrapper.find("input[id='titulo']").).toBe("string");
+    // expect(wrapper.find("input[id='titulo']")).toBe("string");
 
   })
 
