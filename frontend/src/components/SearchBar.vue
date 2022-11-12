@@ -22,16 +22,6 @@ export default defineComponent({
     methods: {
     
     },
-    computed: {
-        searchBooks() {
-            const req = fetch(`http://localhost:8081/api/v1/livros?filtro=${this.search}`);
-            const data = req.json();
-
-            console.log(data);
-
-            return data;
-        }
-    },
     data() {
         return {
             search: ""
