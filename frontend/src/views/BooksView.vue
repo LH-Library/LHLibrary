@@ -1,7 +1,7 @@
 <template>
   <main class="container">
     <div class="d-flex justify-content-between">
-      <SearchBar />
+      <SearchBar @searchedBooks="printSearchedBooks"/>
       <button type="button" class="btn btn-danger" @click="goToAddBookPage">Adicionar</button>
     </div>
     <div class="mt-5">
@@ -24,16 +24,9 @@ export default defineComponent({
     goToAddBookPage() {
       this.$router.push({ name: 'livros-novo' })
     },
-    async getBooks() {
-      const req = await fetch(`http://localhost:8081/api/v1/livros`)
-      const data = await req.json();
-
-      console.log(data);
-      this.books = data;
+    printSearchedBooks(books : any) {
+      this.books = books
     }
-  },
-  mounted() {
-      this.getBooks();
   },
   data() {
     return {
