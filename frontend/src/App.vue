@@ -2,8 +2,8 @@
 <TheHeader />
 <nav class="navbar navbar-dark navbar-expand-lg"> 
   <div class="container-fluid">
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+          <ul class="navbar-nav justify-content-evenly w-100">
               <li class="nav-item">
                 <RouterLink class="nav-link" to="/livros">Livros</RouterLink>
               </li>
