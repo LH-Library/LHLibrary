@@ -10,7 +10,9 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.6",
     "@types/node": "^18.11.9",
+    "bootstrap": "^5.2.2",
     "core-js": "^3.8.3",
     "global-fetch": "^0.2.2",
     "vue": "^3.2.13",

@@ -13,11 +13,12 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 
 export default defineComponent({
     name: 'SearchBar',
+    emit: ['searchedBooks'],
     methods: {
         async searchBooks() {
             const req = await fetch(`http://localhost:8081/api/v1/livros?filtro=${this.search}`);
@@ -44,6 +45,6 @@ export default defineComponent({
 })
 </script>
 
-<style>
+<style lang="scss">
 
 </style>
