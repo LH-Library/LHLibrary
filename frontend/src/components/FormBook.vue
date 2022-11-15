@@ -78,17 +78,32 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-danger mt-5" v-if="this.form.id !== undefined" @click="updateBook">Atualizar</button>
+        <button type="submit" class="btn btn-danger mt-5" v-if="form.id !== undefined"
+            @click="updateBook">Atualizar</button>
         <button type="submit" class="btn btn-danger mt-5" v-else @click="createBook">Enviar</button>
+        <RequestAlert class="mt-3" @showAlert="returnRequestAlert" :show="showAlert" :success="alertSuccess"/>
     </form>
 </template>
   
 <script lang="ts">
 import { defineComponent } from 'vue';
+import RequestAlert from '@/components/RequestAlert.vue';
 
 export default defineComponent({
     name: 'FormBook',
+    components: { RequestAlert },
     methods: {
+        showRequestAlert(responseResult : boolean) {
+            this.showAlert = true;
+            if (!responseResult) {
+                this.alertSuccess = false;
+                return;
+            }
+            this.alertSuccess = true;
+        },
+        returnRequestAlert(show : boolean) {
+            this.showAlert = show;
+        },
         async getBookInformation(id: string | string[]) {
             const req = await fetch(`http://localhost:8081/api/v1/livros/${id}`)
             const data = await req.json();
@@ -96,16 +111,16 @@ export default defineComponent({
             console.log(data);
 
             this.form.titulo = data.titulo,
-            this.form.autor = data.autor,
-            this.form.editora = data.editora,
-            this.form.edicao = data.edicao,
-            this.form.idioma = data.idioma,
-            this.form.paginas = data.paginas,
-            this.form.genero = data.genero,
-            this.form.status = data.status,
-            this.form.isbn = data.isbn,
-            this.form.ativo = data.ativo,
-            this.form.local = data.local
+                this.form.autor = data.autor,
+                this.form.editora = data.editora,
+                this.form.edicao = data.edicao,
+                this.form.idioma = data.idioma,
+                this.form.paginas = data.paginas,
+                this.form.genero = data.genero,
+                this.form.status = data.status,
+                this.form.isbn = data.isbn,
+                this.form.ativo = data.ativo,
+                this.form.local = data.local
         },
         async createBook(e: Event) {
             e.preventDefault();
@@ -124,18 +139,15 @@ export default defineComponent({
                 local: this.form.local
             }
 
-            const dataJson = JSON.stringify(data);
-
-            const req = await fetch("http://localhost:8081/api/v1/livros/", {
+            const reqOptions = {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: dataJson
-            });
+                body: JSON.stringify(data)
+            }
 
-            const res = await req.json();
+            const res = await fetch("http://localhost:8081/api/v1/livros/", reqOptions);
 
-            console.log(res);
-
+            this.showRequestAlert(res.ok);
         },
         async updateBook(e: Event) {
             e.preventDefault();
@@ -154,18 +166,15 @@ export default defineComponent({
                 local: this.form.local
             }
 
-            const dataJson = JSON.stringify(data);
-
-            const req = await fetch(`http://localhost:8081/api/v1/livros/${this.form.id}`, {
+            const reqOptions = {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
-                body: dataJson
-            });
+                body: JSON.stringify(data)
+            };
 
-            const res = await req.json();
+            const res = await fetch(`http://localhost:8081/api/v1/livros/${this.form.id}`, reqOptions);
 
-            console.log(res);
-
+            this.showRequestAlert(res.ok);
         }
     },
     mounted() {
@@ -188,7 +197,9 @@ export default defineComponent({
                 isbn: null,
                 ativo: true,
                 local: null
-            }
+            },
+            showAlert: false,
+            alertSuccess: false
         }
     }
 });
