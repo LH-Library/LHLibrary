@@ -38,6 +38,6 @@ public class LeitorController {
     @PutMapping("/{id}")
     public ResponseEntity<Leitor> updateLeitor(@NonNull @RequestBody Leitor leitor, @NonNull @PathVariable Long id) {
         leitor.setId(id);
-        return new ResponseEntity<>(leitorService.updateLeitor(leitor), HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(leitorService.updateLeitor(leitor), HttpStatus.OK);
     }
 }

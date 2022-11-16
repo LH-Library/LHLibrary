@@ -37,6 +37,6 @@ public class LivroController {
     @PutMapping("/{id}")
     public ResponseEntity<Livro> updateLivro(@NonNull @RequestBody Livro livro, @NonNull @PathVariable Long id) {
         livro.setId(id);
-        return new ResponseEntity<>(livroService.updateLivro(livro), HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(livroService.updateLivro(livro), HttpStatus.OK);
     }
 }
