@@ -3,7 +3,7 @@
         <div class="input-group has-validation">
             <span class="input-group-text" >Pesquisar</span>
             <div class="form-floating" :class="{'is-invalid': noResultsFound}">
-                <input type="text" class="form-control" :class="{'is-invalid': noResultsFound}" id="floatingInputGroup2" placeholder="Título, autor ou gênero" v-model="search">
+                <input type="text" class="form-control" :class="{'is-invalid': noResultsFound}" id="floatingInputGroup2" v-bind:placeholder="customPlaceholder" v-model="search">
                 <label for="floatingInputGroup2">Pesquisa</label>
             </div>
             <div v-show="noResultsFound" class="invalid-feedback">
@@ -18,23 +18,27 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
     name: 'SearchBar',
-    emit: ['searchedBooks'],
+    emit: ['searchResult'],
+    props: {
+        customPlaceholder: String,
+        endpoint: String
+    },
     methods: {
-        async searchBooks() {
-            const req = await fetch(`http://localhost:8081/api/v1/livros?filtro=${this.search}`);
+        async searchResult() {
+            const req = await fetch(`http://localhost:8081/api/v1/${this.endpoint}?filtro=${this.search}`);
             const data = await req.json();
             this.noResultsFound = data.length == 0;
-            this.$emit("searchedBooks", data);
+            this.$emit("searchResult", data);
             return data;
         }
     },
     watch: {
         async search() {
-            this.searchBooks();
+            this.searchResult();
         }
     },
     mounted() {
-        this.searchBooks();
+        this.searchResult();
     },
     data() {
         return {

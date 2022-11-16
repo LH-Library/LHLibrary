@@ -34,7 +34,27 @@ const routes: Array<RouteRecordRaw> = [
     path: '/livros/detalhes/:id',
     name: 'livros-detalhes',
     component: () => import('../views/DetailsBookView.vue')
-  }
+  },
+  {
+    path: '/leitores/novo',
+    name: 'leitores-novo',
+    component: () => import('../views/NewReaderView.vue')
+  },
+  {
+    path: '/leitores/editar/:id',
+    name: 'leitores-editar',
+    component: () => import('../views/EditReaderView.vue')
+  },
+  {
+    path: '/leitores/detalhes/:id',
+    name: 'leitores-detalhes',
+    component: () => import('../views/DetailsReaderView.vue')
+  },
+  {
+    path: '/leitores',
+    name: 'leitores',
+    component: () => import('../views/ReadersView.vue')
+  },
 ]
 
 const router = createRouter({

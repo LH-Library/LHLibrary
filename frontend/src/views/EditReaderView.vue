@@ -1,18 +1,18 @@
 <template>
 <main class="container">
-  <FormBook />
+  <FormReader />
 </main>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import FormBook from '@/components/FormBook.vue';
+import FormReader from '@/components/FormReader.vue';
 
 export default defineComponent({
-    name: "NewBookView",
+    name: "EditReaderView",
     props: {
     },
-    components: { FormBook }
+    components: { FormReader }
 });
 </script>
 
