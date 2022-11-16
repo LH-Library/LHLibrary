@@ -20,14 +20,15 @@
         </tbody>
     </table>
 </template>
-<script>
-import { defineComponent } from "vue";
+<script lang="ts">
+import IBook from "@/interfaces/IBook";
+import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
     name: 'BooksTable',
-    props: { books: { type: Array } },
+    props: { books: { type: Array as PropType<IBook[]> } },
     methods: {
-        goToDetailsBookPage(id) {
+        goToDetailsBookPage(id: number) {
             this.$router.push({ name: 'livros-detalhes', params: { id: id } })
         }
     },

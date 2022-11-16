@@ -1,7 +1,7 @@
 <template>
   <main class="container">
     <div class="d-flex justify-content-between">
-      <SearchBar @searchedBooks="printSearchedBooks"/>
+      <SearchBar @searchResult="printSearchedBooks" :customPlaceholder="'Título, autor ou gênero'" :endpoint="'livros'"/>
       <button type="button" class="btn btn-danger" @click="goToAddBookPage">Adicionar</button>
     </div>
     <div class="mt-5">
