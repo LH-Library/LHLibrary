@@ -23,6 +23,7 @@ public class LocacaoItem implements Serializable {
     @ManyToOne
     @JoinColumn(name="id_livro", referencedColumnName = "id")
     @EqualsAndHashCode.Exclude
+    @Setter
     private Livro livro;
 
     @Column(name="prazo_devolucao")

@@ -25,6 +25,7 @@ public class Locacao implements Serializable {
     @ManyToOne
     @JoinColumn(name="ID_LEITOR", referencedColumnName = "ID")
     @EqualsAndHashCode.Exclude
+    @Setter
     private Leitor leitor;
 
     @ManyToOne
