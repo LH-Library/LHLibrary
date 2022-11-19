@@ -17,7 +17,4 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-main {
-  margin: 100px 0;
-}
 </style>

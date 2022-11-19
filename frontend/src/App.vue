@@ -40,7 +40,7 @@ export default defineComponent({
   components: {
     TheHeader,
     TheFooter
-  },
+  }
 });
 </script>
 
@@ -65,5 +65,19 @@ nav {
       color: #42b983;
     }
   }
+}
+main {
+  min-height: 72vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 3rem 0;
+}
+
+tbody {
+    th {
+        font-weight: 500;
+    }
 }
 </style>

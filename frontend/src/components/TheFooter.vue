@@ -26,6 +26,7 @@ footer {
     width: 100%;
     font-size: 1.2rem;
     color: #ffffff;
+    height: 13vh;
 }
 img {
     width: 20%;

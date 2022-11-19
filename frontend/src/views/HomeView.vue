@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <main class="home">
     <div class="container">
       <div class="row row-cols-2 row-cols-md-3 g-4">
         <div class="col">
@@ -46,7 +46,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script lang="ts">
@@ -60,7 +60,4 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.home {
-  padding: 50px 0;
-}
 </style>

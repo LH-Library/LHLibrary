@@ -1,6 +1,6 @@
 <template>
   <main class="container">
-    <div class="row">
+    <div class="row w-100">
       <div class="col-md-10">
         <div class="row">
           <div class="col-md-6">
@@ -85,10 +85,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-main {
-  margin: 100px 0;
-}
-
 buttton {
   color: #7b0000;
 }

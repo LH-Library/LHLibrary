@@ -1,10 +1,10 @@
 <template>
   <main class="container">
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between w-100">
       <SearchBar @searchResult="printSearchedReaders" :customPlaceholder="'Nome ou CPF'" :endpoint="'leitor'"/>
       <button type="button" class="btn btn-danger" @click="goToAddReaderPage">Adicionar</button>
     </div>
-    <div class="mt-5">
+    <div class="mt-5 w-100">
       <ReadersTable :readers="readers" />
     </div>
   </main>
@@ -38,7 +38,4 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-main {
-  margin: 100px 0;
-}
 </style>
