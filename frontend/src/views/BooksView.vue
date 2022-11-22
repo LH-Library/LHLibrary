@@ -1,13 +1,13 @@
 <template>
-  <main class="container">
-    <div class="d-flex justify-content-between">
-      <SearchBar @searchResult="printSearchedBooks" :customPlaceholder="'Título, autor ou gênero'" :endpoint="'livros'"/>
-      <button type="button" class="btn btn-danger" @click="goToAddBookPage">Adicionar</button>
-    </div>
-    <div class="mt-5">
-      <BooksTable :books="books" />
-    </div>
-  </main>
+<main class="container">
+  <div class="d-flex justify-content-between w-100">
+    <SearchBar @searchResult="printSearchedBooks" :customPlaceholder="'Título, autor ou gênero'" :endpoint="'livros'"/>
+    <button type="button" class="btn btn-danger" @click="goToAddBookPage">Adicionar</button>
+  </div>
+  <div class="mt-5 w-100">
+    <BooksTable :books="books" />
+  </div>
+</main>
 </template>
 
 <script lang="ts">
@@ -38,7 +38,4 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-main {
-  margin: 100px 0;
-}
 </style>

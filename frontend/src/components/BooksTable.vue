@@ -41,7 +41,6 @@ export default defineComponent({
 
 <style lang="scss">
 .title-link {
-    font-weight: 600;
     color: #3f3f3f;
     text-decoration: none;
     &:hover {
