@@ -3,24 +3,34 @@
 <nav class="navbar navbar-dark navbar-expand-lg"> 
   <div class="container-fluid">
       <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
-          <ul class="navbar-nav justify-content-evenly w-100">
+          <ul class="navbar-nav justify-content-between w-100 mx-5">
+              <li class="nav-item">
+                <RouterLink class="nav-link" to="/">
+                  <font-awesome-icon icon="fa-solid fa-house" />
+                </RouterLink>
+              </li>
               <li class="nav-item">
                 <RouterLink class="nav-link" to="/livros">Livros</RouterLink>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <RouterLink class="nav-link"  to="/usuarios">Usuários</RouterLink>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <RouterLink class="nav-link"  to="/leitores">Leitores</RouterLink>
               </li>
               <li class="nav-item">
                 <RouterLink class="nav-link"  to="/locacao">Locação</RouterLink>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <RouterLink class="nav-link"  to="/devolucao">Devolução</RouterLink>
               </li>
               <li class="nav-item">
                 <RouterLink class="nav-link" to="/entregas-pendentes">Entregas Pendentes</RouterLink>
+              </li> -->
+              <li class="nav-item">
+                <RouterLink class="nav-link" to="/#">
+                  <font-awesome-icon icon="fa-solid fa-user" />
+                </RouterLink>
               </li>
           </ul>
       </div>
@@ -56,10 +66,17 @@ export default defineComponent({
 nav {
   padding: 30px;
   background: #920000;
+  font-size: 1.2rem;
+  height: 5vh;
+
+  svg {
+    width: 30px;
+    height: 30px;
+  }
 
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: #fffddd!important;
 
     &.RouterLink-exact-active {
       color: #42b983;
@@ -67,7 +84,7 @@ nav {
   }
 }
 main {
-  min-height: 72vh;
+  min-height: 67vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
