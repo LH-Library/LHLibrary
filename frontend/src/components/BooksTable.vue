@@ -10,9 +10,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="(book, i) in books" :key="i">
+            <tr v-for="(book, i) in books" :key="i" @click="goToDetailsBookPage(book.id)">
                 <th scope="row">{{ book.id }}</th>
-                <td><a class="title-link" @click="goToDetailsBookPage(book.id)">{{ book.titulo }}</a></td>
+                <td>{{ book.titulo }}</td>
                 <td>{{ book.autor }}</td>
                 <td>{{ book.genero }}</td>
                 <td>{{ book.local }}</td>
@@ -43,9 +43,13 @@ export default defineComponent({
 .title-link {
     color: #3f3f3f;
     text-decoration: none;
-    &:hover {
-        color: #7b0000;
-        cursor: pointer;
+    
+}
+tbody {
+    tr {
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
 </style>

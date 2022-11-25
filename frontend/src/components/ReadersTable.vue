@@ -8,9 +8,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="(reader, i) in readers" :key="i">
+            <tr v-for="(reader, i) in readers" :key="i" @click="goToDetailsReaderPage(reader.id)">
                 <th scope="row">{{ reader.id }}</th>
-                <td><a class="title-link" @click="goToDetailsReaderPage(reader.id)">{{ reader.nome }}</a></td>
+                <td>{{ reader.nome }}</td>
                 <td>{{ reader.email }}</td>
             </tr>
         </tbody>
@@ -39,10 +39,13 @@ export default defineComponent({
 .title-link {
     color: #3f3f3f;
     text-decoration: none;
+}
 
-    &:hover {
-        color: #7b0000;
-        cursor: pointer;
+tbody {
+    tr {
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
 </style>
