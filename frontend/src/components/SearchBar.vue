@@ -1,7 +1,6 @@
 <template>
     <div>
         <div class="input-group has-validation">
-            <span class="input-group-text" >Pesquisar</span>
             <div class="form-floating" :class="{'is-invalid': noResultsFound}">
                 <input type="text" class="form-control" :class="{'is-invalid': noResultsFound}" id="floatingInputGroup2" v-bind:placeholder="customPlaceholder" v-model="search">
                 <label for="floatingInputGroup2">Pesquisa</label>

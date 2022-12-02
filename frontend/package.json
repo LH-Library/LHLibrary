@@ -22,7 +22,9 @@
     "bootstrap": "^5.2.2",
     "core-js": "^3.8.3",
     "global-fetch": "^0.2.2",
+    "moment": "^2.29.4",
     "vue": "^3.2.13",
+    "vue-multiselect": "^3.0.0-alpha.2",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
   },
