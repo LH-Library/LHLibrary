@@ -140,7 +140,7 @@ export default defineComponent({
     },
     mounted() {
         var date = new Date();
-        date.setDate(date.getDate() + 1);
+        date.setDate(date.getDate() + 14);
         this.dataDevolucao = date.toISOString().slice(0, 10);
 
         this.form.itens.pop();
@@ -180,7 +180,7 @@ export default defineComponent({
 
 </style>
   
-<style lang="scss">
+<style lang="scss" scoped>
 .form-floating {
     font-size: 12px !important;
 

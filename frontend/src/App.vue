@@ -28,7 +28,7 @@
                 <RouterLink class="nav-link" to="/entregas-pendentes">Entregas Pendentes</RouterLink>
               </li> -->
               <li class="nav-item">
-                <RouterLink class="nav-link" to="/#">
+                <RouterLink class="nav-link" to="#">
                   <font-awesome-icon icon="fa-solid fa-user" />
                 </RouterLink>
               </li>
@@ -76,7 +76,7 @@ nav {
 
   a {
     font-weight: bold;
-    color: #fffddd!important;
+    color: #ffffff!important;
 
     &.RouterLink-exact-active {
       color: #42b983;
