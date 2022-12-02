@@ -22,7 +22,7 @@
 
         <tbody v-else>
             <tr v-for="(book, i) in books" :key="i">
-                <th scope="row">{{ book.id }} "id" {{i}}</th>
+                <th scope="row">{{ book.id }}</th>
                 <td>{{ book.titulo }}</td>
                 <td v-if="showAuthorColumn">{{ book.autor }}</td>
                 <td v-if="showLocalColumn">{{ book.local }}</td>
